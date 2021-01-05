@@ -11,3 +11,11 @@ Meteor.startup(() => {
     ].forEach(insertUser);
   }
 });
+
+Meteor.publish('getUsers', function () {
+  return UserCollection.find({});
+});
+
+Meteor.publish('saveCount', function ({ id, count }) {
+  UserCollection.update(id, { $set: { count } });
+});
